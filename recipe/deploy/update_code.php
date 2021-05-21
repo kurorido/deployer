@@ -52,15 +52,15 @@ task('deploy:update_code', function () {
     }
 
     // Populate known hosts.
-    preg_match('/.*(@|\/\/)([^\/:]+).*/', $repository, $match);
-    if (isset($match[2])) {
-        $repositoryHostname = $match[2];
-        try {
-            run("ssh-keygen -F $repositoryHostname");
-        } catch (RunException $e) {
-            run("ssh-keyscan -H $repositoryHostname >> ~/.ssh/known_hosts");
-        }
-    }
+    // preg_match('/.*(@|\/\/)([^\/:]+).*/', $repository, $match);
+    // if (isset($match[2])) {
+    //     $repositoryHostname = $match[2];
+    //     try {
+    //         run("ssh-keygen -F $repositoryHostname");
+    //     } catch (RunException $e) {
+    //         run("ssh-keyscan -H $repositoryHostname >> ~/.ssh/known_hosts");
+    //     }
+    // }
 
     // Clone the repository to a bare repo.
     $bare = parse('{{deploy_path}}/.dep/repo');
